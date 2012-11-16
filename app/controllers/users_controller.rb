@@ -16,6 +16,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @profile = @user.profile
     @exercises = @user.exercises  
+    @microposts = @user.microposts
+    @micropost = @user.microposts.build
 
     @commentable = @user
     @comments = @commentable.comments
@@ -33,8 +35,9 @@ class UsersController < ApplicationController
     @user = User.new
     profile = @user.build_profile
     exercise = @user.exercises.build
+    micropost = @user.micropost.build
 
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }

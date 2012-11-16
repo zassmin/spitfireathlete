@@ -1,11 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-
 <h1><%= @user.name %></h1>
 <p><%= @profile.tagline %></p>
 
 <p>About Me:</p>
 <p><%= @profile.about %></p>
+
+<h2>Status Updates:</h2>
+<% @user.microposts.each do |f| %>
+  <%= f.content %>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <%= f.fields_for :microposts, @micropost do |c| %> 
+    <%= c.text_field :content %>
+  <% end %>
+    <%= f.submit %>
+  <% end %>
 
 <h2>My Work-Outs:</h2>
 

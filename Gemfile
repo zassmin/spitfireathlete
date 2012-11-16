@@ -5,6 +5,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
 
+
 group :development do
   gem 'sqlite3'
 end

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'thin'
 gem 'jquery-rails'
+gem 'bcrypt-ruby'
 
 group :development do
   gem 'sqlite3'

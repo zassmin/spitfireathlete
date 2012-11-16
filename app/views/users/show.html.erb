@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= @user.name %></h1>
+<p><%= @profile.tagline %></p>
+
+<p>About Me:</p>
+<p><%= @profile.about %></p>
+
+<h2>My Work-Outs:</h2>
+
+<% @exercises.each do |f| %>
+<%= f.exercise_name %>
+<%= f.exercise_prescription %><br />
+<% end %>
+
+<h1>Comments</h1>
+
+<%= link_to "New Comment", [:new, @commentable, :comment] %>
+
+<% @comments.each do |comment| %>
+  <%= simple_format comment.content %>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
 private
   def load_commentable
-     klass = [User, Profile, Exercise].detect { |c| params["#{c.name.underscore}_id"] }
+     klass = [User, Exercise].detect { |c| params["#{c.name.underscore}_id"] }
      @commentable = klass.find(params["#{klass.name.underscore}_id"])
   end
 end

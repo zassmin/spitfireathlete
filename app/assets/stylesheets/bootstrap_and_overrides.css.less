@@ -1,0 +1,300 @@
+@import "twitter/bootstrap/bootstrap";
+body { 
+	padding-top: 60px;
+}
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not 
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+
+// FONTS 
+@import url(http://fonts.googleapis.com/css?family=Carrois+Gothic);
+
+// Navbar Customizations
+@navbarHeight:                    20px;
+@navbarBackground:                @white;
+@navbarBackgroundHighlight:       @white;
+
+@navbarText:                      #FF0066;
+@navbarLinkColor:                 #FF0066;
+@navbarLinkColorHover:            #242424;
+@navbarLinkColorActive:           #FF0066;
+@navbarLinkBackgroundHover:       transparent;
+@navbarLinkBackgroundActive:      transparent;
+
+@navbarSearchBackground:          @white;
+@navbarSearchBackgroundFocus:     @white;
+@navbarSearchBorder:              transparent;
+@navbarSearchPlaceholderColor:    transparent;
+@navbarBrandColor:                transparent;
+
+@heroUnitBackground:              @white;
+@heroUnitHeadingColor:            #FF0066;
+
+.navbar {
+  background: white; 
+  color: #F06;
+  width: 980px;
+  padding-bottom: 10px;
+}
+
+.navbar-inner {
+  min-height: @navbarHeight;
+  margin-top: 17px;
+  padding-left:  20px;
+  padding-right: 20px;
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  .border-radius(4px);
+  /*.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");*/
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  color: #F06;
+  background-color: white;
+}
+
+// Links
+.navbar .nav > li > a {
+  float: right;
+  // Vertically center the text given @navbarHeight
+  @elementHeight: 20px;
+  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 10px ((@navbarHeight - @elementHeight) / 2 + 1);
+  line-height: 19px;
+  font-size: 18px;
+  color: @navbarLinkColor;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+.container {
+  position: relative;
+  width: 980px;
+  z-index: 1;
+  margin: auto;
+}
+
+/* LEFT RIGHT CENTER */
+.pull-left {
+  float: left;
+}
+
+.center {
+  margin: 0px auto;
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+/* PROFILES */
+
+.profilepicture {
+  float: left;
+  width: 300px;  
+  margin-right: 10px;
+
+  
+}
+
+.profilecontent {
+  
+}
+
+.profilecontent h1 {
+  text-align: left;
+  padding-bottom: 1px;
+}
+
+.profilecontent h2 {
+  text-align: left;
+  font-size: 20px;
+}
+
+.profileadmin {
+  border: solid;
+}
+
+
+.form_for {
+  text-align: center;
+  margin: 0px auto;
+  border: red;
+}
+
+
+/* JQUERY MASONRY */
+
+.fliptainer { 
+  width: 300px;
+  margin: 10px;
+  float: left;
+  left: 1%;
+}
+
+/* BUTTONS */
+
+.btn.btn-success.btn-large a {
+  color: #FFFFFF;
+  font-size: 18px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.btn.btn-success.btn-large a:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 0px auto;
+  text-align: center;
+}
+
+/* FORM */
+
+.field {
+  text-align: left;
+  
+}
+
+.field p {
+  font-size: 18px;
+  font-family: 'Carrois Gothic', sans-serif;
+}
+
+/* UNIVERSAL */
+
+html {
+  overflow-y: scroll;
+}
+
+section{
+  overflow: auto; 
+}
+
+textarea {
+  resize: vertical;
+}
+
+.navbar .navbar-fixed-top .navbar-inner {
+  width: 980px;
+}
+
+header a {
+  font-family: 'Carrois Gothic', sans-serif;
+}
+
+#logo {
+  float: left;
+  font-family: 'Carrois Gothic', sans-serif;
+  margin-right: 10px;
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #FF0066;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-top: 7px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #242424;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  color: #FF0066;
+  font-family: 'Carrois Gothic', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.8em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
+  color: #242424;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.5em;
+  line-height: 1.7em;
+  color: #242424;
+}
+
+ul li {
+  font-size: 1.5em;
+  letter-spacing: 0.9px;
+  padding: 1.5px;
+  list-style-position: inside;
+  line-height: 2em;
+  color: #242424; 
+}
+
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #FF0066;
+  color: #302F27;
+  font-size: 11px;
+}
+
+footer a {
+  color: #302F27;
+  font-size: 11px;
+}  
+
+
+footer a:hover { 
+  color: #FF0066;
+  background-color: transparent;
+  text-transform: none;
+  text-decoration: none;
+}
+
+footer small {
+  float: left;
+}
+

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @profile = @user.profile
     @exercises = @user.exercises  
     @microposts = @user.microposts
     @micropost = @user.microposts.build
@@ -33,9 +32,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    profile = @user.build_profile
     exercise = @user.exercises.build
-    micropost = @user.micropost.build
+    micropost = @user.microposts.build
 
     
     respond_to do |format|

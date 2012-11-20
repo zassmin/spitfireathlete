@@ -31,14 +31,6 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= f.fields_for :profile do |builder| %>
-    <%= render 'profile_fields', f: builder %>
-  <% end %>  
-
-  <%= f.fields_for :exercises do |builder| %>
-    <% render 'exercises_fields', f: builder %>
-  <% end %> 
-
   <div class="actions">
     <%= f.submit %>
   </div>

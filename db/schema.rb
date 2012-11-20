@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116001208) do
+ActiveRecord::Schema.define(:version => 20121120011947) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20121116001208) do
 
   add_index "exercises", ["user_id"], :name => "index_exercises_on_user_id"
 
+  create_table "highfive", :force => true do |t|
+    t.boolean  "highfive"
+    t.integer  "highfiveable_id"
+    t.string   "highfiveable_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -42,22 +50,13 @@ ActiveRecord::Schema.define(:version => 20121116001208) do
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
-  create_table "profiles", :force => true do |t|
-    t.string   "tagline"
-    t.string   "about"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "email"
     t.string   "password_digest"
+    t.string   "about"
   end
 
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  highfive: false
+  highfiveable_id: 1
+  highfiveable_type: MyString
+
+two:
+  highfive: false
+  highfiveable_id: 1
+  highfiveable_type: MyString

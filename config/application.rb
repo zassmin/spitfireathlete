@@ -58,5 +58,10 @@ module Spitfireathlete
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+     # Env Variables
+      ENV['AWS_KEY'] = 'AKIAJMGK3JWMX7CW6FSQ'      
+      ENV['AWS_SECRET'] = 'iWDu+IvY1WUKRKjqKoOHbBEoIR0D+l1SeF1nfSgi'
+      ENV['AWS_BUCKET'] = 'spitfireathlete'
   end
 end

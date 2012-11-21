@@ -1,27 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+<div class="profilepicture pull-left">
+<%= image_tag @user.image_url if @user.image? %>
+<%= form_for(@user) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.submit "Update Photo" %>
+<% end %>
+</div>
+
+<div class="profilecontent">
 <h1><%= @user.name %></h1>
-<%= @user.about %>
+<h2><%= @user.about %></h2>
 
 <%= form_for(@user) do |f| %>
   <%= f.label :about, "About Me:" %>
   <%= f.text_field :about, value: "I am an ultramarathoner..." %>
 <% end %>
 
-<h3>Status Updates:</h3>
-<% @user.microposts.each do |f| %>
-  <%= f.content %>
-<% end %>
-
-<!--Here if user logs in, they see this -->
-
+<h3>Update Your Status:</h3>
 <%= form_for(@user) do |f| %>
   <%= f.fields_for :microposts, @micropost do |c| %> 
     <%= c.text_field :content %>
   <% end %>
-  <%= check_box_tag(:highfive) %><%= label_tag(:highfive, "Like") %>
-    <%= f.submit %>
+  
+    <%= f.submit "Update Status" %>
+    <br /><%= link_to "High Five!", users_path %>
   <% end %>
+
+<h3>Latest Status Updates</h3>
+<% @user.microposts.each do |f| %>
+  <ul><%= f.content %></ul>
+<% end %>
+
   
 <h3>My Work-Outs:</h3>
 
@@ -30,13 +40,17 @@
 <%= f.exercise_prescription %><br />
 <% end %>
 
+<br />
 <h3>Comments</h3>
-
-<%= link_to "New Comment", [:new, @commentable, :comment] %>
+<%= link_to "Add A New Comment", [:new, @commentable, :comment] %>
 
 <% @comments.each do |comment| %>
   <%= simple_format comment.content %>
 <% end %>
 
+
+
+<br /><br />
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>

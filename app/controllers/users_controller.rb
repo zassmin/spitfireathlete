@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     @comments = @commentable.comments
     @comment = Comment.new
 
+    @feed = @user.feed.all
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.new
     exercise = @user.exercises.build
     micropost = @user.microposts.build
-
+    feed = @user.feed
     
     respond_to do |format|
       format.html # new.html.erb

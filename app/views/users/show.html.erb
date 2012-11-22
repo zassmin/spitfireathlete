@@ -6,6 +6,25 @@
   <%= f.file_field :image %>
   <%= f.submit "Update Photo" %>
 <% end %>
+
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li><p>
+      <%= friendship.friend.name %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </p></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
 </div>
 
 <div class="profilecontent">
@@ -24,7 +43,7 @@
   <% end %>
   
     <%= f.submit "Update Status" %>
-    <br /><%= link_to "High Five!", users_path %>
+    <br /><%= check_box_tag(:highfive) %><%= label_tag(:highfive, "Like") %>
   <% end %>
 
 <h3>Latest Status Updates</h3>
@@ -48,7 +67,8 @@
   <%= simple_format comment.content %>
 <% end %>
 
-
+<h3>Feed Items Go Here</h3>
+<%= @feed %>
 
 <br /><br />
 <%= link_to 'Edit', edit_user_path(@user) %> |

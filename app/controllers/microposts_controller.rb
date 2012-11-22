@@ -15,6 +15,7 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find(params[:id])
     Micropost.find( :all, :order => "created_at DESC" )
+    
 
     respond_to do |format|
       format.html # show.html.erb

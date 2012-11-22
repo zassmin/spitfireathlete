@@ -10,6 +10,8 @@ Spitfireathlete::Application.routes.draw do
     resources :comments 
   end 
 
+  resources :friendships
+
   resources :exercises do
     resources :comments
   end

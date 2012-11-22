@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120220000) do
+ActiveRecord::Schema.define(:version => 20121122080820) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(:version => 20121120220000) do
 
   add_index "exercises", ["user_id"], :name => "index_exercises_on_user_id"
 
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "follower_id"
+  end
+
+  add_index "friendships", ["follower_id"], :name => "index_friendships_on_follower_id"
+  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
+
   create_table "highfive", :force => true do |t|
     t.boolean  "highfive"
     t.integer  "highfiveable_id"
@@ -46,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20121120220000) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "friend_id"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"

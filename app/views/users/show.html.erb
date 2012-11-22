@@ -68,7 +68,11 @@
 <% end %>
 
 <h3>Feed Items Go Here</h3>
-<%= @feed %>
+
+<% @feed.each do |f| %>
+  <ul><%= f.content %></ul>
+  <p><%= f.user_id %></p>
+<% end %>
 
 <br /><br />
 <%= link_to 'Edit', edit_user_path(@user) %> |

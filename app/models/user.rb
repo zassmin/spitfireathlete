@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-  attr_accessible :name, :email, :password, :password_confirmation, :profile_attributes, :exercises_attributes, :microposts_attributes, :micropost, :about, :image
+  attr_accessible :name, :email, :password, :password_confirmation, :exercises_attributes, :microposts_attributes, :profiles_attributes, :micropost, :about, :image
 
   validates_uniqueness_of :email
 

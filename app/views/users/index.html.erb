@@ -12,6 +12,8 @@
 
 <br /><br /><br />
 
+<h3><%= alert %></h3>
+
 <div class="btn btn-success btn-large center">
   <%= link_to "SIGN UP", new_user_path, style: "color: white; text-align: right;" %>
 </div>
@@ -24,9 +26,18 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    
+    <% if allow? "users", "edit" %>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <% end %>
+
+    <% if allow? "users", "destroy" %>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+
+    <% if allow? "users", "edit" %>
     <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

@@ -3,7 +3,7 @@ class Permission
     allow :users, [:new, :create]
     allow :sessions, [:new, :create, :destroy]
     if user
-      allow :users, [:show,:edit, :update] do |current_user|
+      allow :users, [:show, :edit, :update] do |current_user|
         current_user.id == user.id
       end
 

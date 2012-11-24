@@ -26,9 +26,6 @@
 .content {
   display: block;
 }
-.timestamp {
-  color: $grayLight;
-}
 .gravatar {
   float: left;
   margin-right: 10px;

@@ -1,11 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <div class="profilepicture pull-left">
-<%= image_tag @user.image_url if @user.image? %>
+<% if @user.image? %>
+<%= image_tag @user.image_url %>
 <%= form_for(@user) do |f| %>
-  <%= f.file_field :image %>
-  <%= f.submit "Update Photo" %>
+        <span class="btn btn-file" style="width: 265px;">
+        <span class="fileupload-new"><%= f.file_field :image %></span>
+        </span><br />
+        <%= f.submit "Add Photo", :class => 'btn btn-primary fileupload-new' %>
+        <% end %>
+<% elsif %>
+
+<div class="fileupload fileupload-new">
+<div class="fileupload-new thumbnail" style="width: 275px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>    
+      <div>
+        <%= form_for(@user) do |f| %>
+        <span class="btn btn-file" style="max-width: 150px;">
+        <span class="fileupload-new"><%= f.file_field :image %></span>
+        </span><br />
+        <%= f.submit "Add Photo", :class => 'btn btn-primary fileupload-new' %>
+        <% end %>
+      </div> 
+</div>
 <% end %>
+
 
 <h2>Friends</h2>
 <ul>
@@ -17,7 +36,7 @@
   <% end %>
 </ul>
 
-<p><%= link_to "Find Friends", users_path %></p>
+<p><%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %></p>
 
 <h2>Friended by Users</h2>
 <ul>
@@ -71,12 +90,24 @@
 <h3>Feed Items Go Here</h3>
 
 <% @feed.each do |f| %>
-  <ul><%= f.content %></ul>
-  <p><%= f.user_id %></p>
+  <ul><%= image_tag f.user.image_url, style: "height: 50px; width: 50px;" %> <b><%= f.user.name %>:</b> <%= f.content %><br />
+  <p><u style="border-bottom: .5px gray; font-size: 9px;"><%= f.created_at %></u></p></ul>
 <% end %> 
 
 <br /><br />
-
+ 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
 </div>
+
+
+
+
+
+
+
+
+
+
+

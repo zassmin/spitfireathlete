@@ -7,6 +7,7 @@ gem 'bcrypt-ruby'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
+gem 'strong_parameters', github: 'rails/strong_parameters'
 
 
 group :development do

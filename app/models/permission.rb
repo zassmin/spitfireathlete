@@ -3,12 +3,14 @@ class Permission
     allow :users, [:new, :create]
     allow :sessions, [:new, :create, :destroy]
     if user
-      allow :users, [:edit, :update] do |user|
-        user == user.id
-      end 
+      allow :users, [:edit, :update] do |current_user|
+        current_user.id == user.id
+      end
+
       allow :microposts, [:edit, :new, :update] do |micropost|
         micropost.user_id == user.id
-      end  
+      end
+
       allow_param :users, :name   
     end
   end
@@ -41,10 +43,10 @@ class Permission
   end
 
   def permit_params!(params)
-      @allowed_params.each do |resource, attributes|
-        if params[resource].respond_to? :permit
-          params[resource] = params[resource].permit(*attributes)
-        end
+    @allowed_params.each do |resource, attributes|
+      if params[resource].respond_to? :permit
+        params[resource] = params[resource].permit(*attributes)
       end
-  end
+    end
+ end
 end

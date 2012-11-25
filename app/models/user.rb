@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :exercises_attributes, :microposts_attributes, :profiles_attributes, :micropost, :about, :image
 
+  validates_presence_of :name, :email, :password, :password_confirmation
   validates_uniqueness_of :email
 
   accepts_nested_attributes_for :exercises, :microposts

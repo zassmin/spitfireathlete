@@ -9,6 +9,8 @@ gem 'rmagick'
 gem 'fog'
 gem 'strong_parameters', github: 'rails/strong_parameters'
 gem 'best_in_place'
+gem 'simple_form'
+
 
 group :development do
   gem 'sqlite3'

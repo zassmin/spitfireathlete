@@ -1,32 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<!--PROFILE PICTURE-->
+
 <div class="profilepicture pull-left">
-<% if @user.image? %>
-<%= image_tag @user.image_url %>
-<%= form_for(@user) do |f| %>
-        <span class="btn btn-file" style="width: 265px;">
-        <span class="fileupload-new"><%= f.file_field :image %></span>
-        </span><br />
-        <%= f.submit "Add Photo", :class => 'btn btn-primary fileupload-new' %>
-        <% end %>
+  <% if @user.image? %>
+  <%= image_tag @user.image_url %>
+
 <% elsif %>
 
-<div class="fileupload fileupload-new">
-<div class="fileupload-new thumbnail" style="width: 275px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
-<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>    
-      <div>
-        <%= form_for(@user) do |f| %>
-        <span class="btn btn-file" style="max-width: 150px;">
-        <span class="fileupload-new"><%= f.file_field :image %></span>
-        </span><br />
-        <%= f.submit "Add Photo", :class => 'btn btn-primary fileupload-new' %>
-        <% end %>
-      </div> 
-</div>
+  <div class="fileupload fileupload-new">
+  <div class="fileupload-new thumbnail" style="width: 275px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>  
+  </div>
 <% end %>
 
+<!-- PROFILE PICTURE UPLOAD -->
 
-<h2>My Friends</h2>
+<%= simple_form_for(@user, :html => { :class => 'form-inline' }) do |f| %>
+<%= f.file_field :image, :style => 'border: none; color: transparent; padding: 10px;' %>
+<%= f.button :submit, "Add Photo", :class => 'btn btn-primary fileupload-new' %>
+<% end %>
+
+<!-- FRIENDS -->
+
+<h2>My Friends:</h2>
 <ul>
   <% for friendship in @user.friendships %>
     <li><p>
@@ -36,15 +33,16 @@
   <% end %>
 </ul>
 
+<div class="btn btn-info">
+  <%= link_to 'Add'+ ' ' + @user.name + ' ' + 'As A Friend', friendships_path(:friend_id => @user), :method => :post, style: 'color: white;' %>
+</div>
 
-<div class="btn btn-info"><%= link_to 'Add'+ ' ' + @user.name + ' ' + 'As A Friend', friendships_path(:friend_id => @user), :method => :post, style: 'color: white;' %></div>
+<br /><br /><br />
 
-<br /><br />
-
-<h2>Followed By:</h2>
+<h2>My Followers:</h2>
 <ul>
   <% for user in @user.inverse_friends %>
-    <li><%= user.name %></li>
+    <li><p><%= user.name %></p></li>
   <% end %>
 </ul>
 </div>
@@ -53,15 +51,13 @@
 <h1><%= best_in_place @user, :name %></h1>
 <h2><%= best_in_place @user, :about, :nil => "Click To Add Your Bio Here" %></h2>
 
-
 <h3>Update Your Status:</h3>
-<%= form_for(@user) do |f| %>
+<%= simple_form_for(@user, :html => {:class => 'form-inline' }) do |f| %>
   <%= f.fields_for :microposts, @micropost do |c| %> 
     <%= c.text_field :content %>
   <% end %>
   
-    <%= f.submit "Update Status" %>
-    <br /><%= check_box_tag(:highfive) %><%= label_tag(:highfive, "Like") %>
+    <%= f.submit "Update Status", class: 'btn' %>
   <% end %>
 
 
@@ -86,7 +82,7 @@
   <%= simple_format comment.content %>
 <% end %>
 
-<h3>Feed Items Go Here</h3>
+<h3>My Feed:</h3>
 
 <% @feed.each do |f| %>
   <ul><%= image_tag f.user.image_url, style: "height: 50px; width: 50px;" %> <b><%= f.user.name %>:</b> <%= f.content %><br />

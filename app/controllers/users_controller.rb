@@ -16,10 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    
-    @exercises = @user.exercises 
-    @exercise = Exercise.new
-
+    @exercises = @user.exercises  
     @microposts = @user.microposts
     @micropost = @user.microposts.build
 

@@ -63,8 +63,5 @@ module Spitfireathlete
       ENV['AWS_KEY'] = 'AKIAJMGK3JWMX7CW6FSQ'      
       ENV['AWS_SECRET'] = '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'
       ENV['AWS_BUCKET'] = 'spitfireathlete'
-
-    # Heroku
-    config.assets.initialize_on_precompile = false
   end
 end

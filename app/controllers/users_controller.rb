@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  respond_to :html, :json
-  
   # GET /users
   # GET /users.json
   def index
@@ -80,8 +78,6 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = current_resource
-    @user.update_attributes(params[:user])
-    respond_with @user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

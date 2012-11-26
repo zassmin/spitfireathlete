@@ -26,7 +26,7 @@
 <% end %>
 
 
-<h2>My Friends</h2>
+<h2>Friends</h2>
 <ul>
   <% for friendship in @user.friendships %>
     <li><p>
@@ -36,12 +36,9 @@
   <% end %>
 </ul>
 
+<p><%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %></p>
 
-<div class="btn btn-info"><%= link_to 'Add'+ ' ' + @user.name + ' ' + 'As A Friend', friendships_path(:friend_id => @user), :method => :post, style: 'color: white;' %></div>
-
-<br /><br />
-
-<h2>Followed By:</h2>
+<h2>Friended by Users</h2>
 <ul>
   <% for user in @user.inverse_friends %>
     <li><%= user.name %></li>
@@ -50,9 +47,13 @@
 </div>
 
 <div class="profilecontent">
-<h1><%= best_in_place @user, :name %></h1>
-<h2><%= best_in_place @user, :about, :nil => "Click To Add Your Bio Here" %></h2>
+<h1><%= @user.name %></h1>
+<h2><%= @user.about %></h2>
 
+<%= form_for(@user) do |f| %>
+  <%= f.label :about, "About Me:" %>
+  <%= f.text_field :about, value: "I am an ultramarathoner..." %>
+<% end %>
 
 <h3>Update Your Status:</h3>
 <%= form_for(@user) do |f| %>
@@ -99,3 +100,14 @@
 <%= link_to 'Back', users_path %>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+

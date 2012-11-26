@@ -8,7 +8,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
 gem 'strong_parameters', github: 'rails/strong_parameters'
-gem 'best_in_place'
+
 
 group :development do
   gem 'sqlite3'
